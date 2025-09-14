@@ -11,4 +11,6 @@
 </svelte:head>
 
 <NavBar />
-{@render children?.()}
+<main class="container mx-auto p-4">
+	{@render children?.()}
+</main>
