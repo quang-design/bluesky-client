@@ -50,6 +50,7 @@
 	"packageManager": "pnpm@10.15.0+sha1.8e43a0b959a228ea479539575a66f5eafc89023a",
 	"dependencies": {
 		"@atproto/api": "^0.16.9",
-		"lucide-svelte": "^0.544.0"
+		"lucide-svelte": "^0.544.0",
+		"multiformats": "^13.4.1"
 	}
 }

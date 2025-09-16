@@ -1,7 +1,7 @@
 <script lang="ts">
 	const { post } = $props();
-
-	const record = $derived(post.record);
+	const text = post?.record?.text ?? '';
+	$inspect(post);
 </script>
 
-<li>{record.text}</li>
+<li>{text}</li>

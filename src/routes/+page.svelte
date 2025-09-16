@@ -6,9 +6,9 @@
 
 	const posts = $derived(data.feed);
 
-	// $inspect(posts);
+	$inspect(posts);
 </script>
 
 {#each posts as post}
-	<Post {post} />
+	<Post post={post.post} />
 {/each}
