@@ -2,9 +2,13 @@
 	import type { PageData } from './$types';
 	import Post from '$lib/components/post.svelte';
 
-	let { data: page }: { data: PageData } = $props();
+	let { data }: { data: PageData } = $props();
+
+	const posts = $derived(data.feed);
+
+	// $inspect(posts);
 </script>
 
-{#each page.data as post (post.post.uri)}
+{#each posts as post}
 	<Post {post} />
 {/each}
