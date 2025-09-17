@@ -7,7 +7,7 @@
 	let searchTerm = $state('');
 </script>
 
-<header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-background">
+<header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-background/85 backdrop-blur">
 	<div class="container mx-auto px-4 py-2">
 		<div class="flex h-12 items-center gap-2 [&_[data-slot=separator]]:!h-4">
 			<Button href="/" variant="ghost" class="p-0 text-lg font-semibold hover:bg-transparent">
@@ -45,7 +45,7 @@
 </header>
 
 {#snippet SearchBar()}
-	<div class="flex w-full items-center gap-2 rounded-md border px-2 py-1.5">
+	<div class="flex w-full items-center gap-2 rounded-md border bg-background px-2 py-1.5">
 		<Search />
 		<input
 			type="search"

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
+	import { getEmblaContext } from './context.js';
 	import { cn, type WithElementRef } from '$lib/utils.js';
 
 	let {
@@ -8,12 +9,21 @@
 		children,
 		...restProps
 	}: WithElementRef<HTMLAttributes<HTMLDivElement>> = $props();
+
+	const emblaCtx = getEmblaContext('<Carousel.Item/>');
 </script>
 
 <div
 	bind:this={ref}
-	data-slot="card"
-	class={cn('flex flex-col gap-2 rounded-xl border bg-card py-4 text-card-foreground ', className)}
+	data-slot="carousel-item"
+	role="group"
+	aria-roledescription="slide"
+	class={cn(
+		'min-w-0 shrink-0 grow-0 basis-full',
+		emblaCtx.orientation === 'horizontal' ? 'pl-2' : 'pt-2',
+		className
+	)}
+	data-embla-slide=""
 	{...restProps}
 >
 	{@render children?.()}
