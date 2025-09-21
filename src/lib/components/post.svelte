@@ -15,7 +15,6 @@
 	const { author, embed, record, likeCount, quoteCount, uri } = $derived(post);
 
 	// $inspect(post);
-	$inspect(index);
 </script>
 
 <Card.Root class="mb-4 shadow-md sm:-mb-4 sm:max-w-sm sm:z-{index + 1} w-full">
