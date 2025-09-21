@@ -7,11 +7,13 @@
 	let searchTerm = $state('');
 </script>
 
-<header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-background/85 backdrop-blur">
+<header
+	class="sticky top-0 z-50 w-full bg-white sm:bg-transparent sm:bg-gradient-to-b sm:from-sky-100 sm:to-sky-100/0"
+>
 	<div class="container mx-auto px-4 py-2">
 		<div class="flex h-12 items-center gap-2 [&_[data-slot=separator]]:!h-4">
-			<Button href="/" variant="ghost" class="p-0 text-lg font-semibold hover:bg-transparent">
-				<span>Bluesky Client</span>
+			<Button href="/" variant="ghost" class="p-0 text-xl font-semibold hover:bg-transparent">
+				<span class="text-sky-500">Bluesky Client</span>
 			</Button>
 
 			<div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
@@ -45,7 +47,9 @@
 </header>
 
 {#snippet SearchBar()}
-	<div class="flex w-full items-center gap-2 rounded-md border bg-background px-2 py-1.5">
+	<div
+		class="flex w-full items-center gap-2 rounded-md border bg-background/85 px-2 py-1.5 backdrop-blur-lg"
+	>
 		<Search />
 		<input
 			type="search"

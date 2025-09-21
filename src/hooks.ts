@@ -1,4 +1,3 @@
-// src/hooks.transport.ts
 import type { Transport } from '@sveltejs/kit';
 import { BlobRef } from '@atproto/api';
 import { CID } from 'multiformats/cid';
