@@ -5,15 +5,19 @@
 
 	interface CommentProps {
 		reply: AppBskyFeedDefs.ThreadViewPost;
+		index?: number;
 	}
 
-	const { reply }: CommentProps = $props();
+	const { reply, index = 0 }: CommentProps = $props();
 	const post = $derived(reply.post);
 
 	// $inspect(reply);
 </script>
 
-<Card.Root class="mb-4 w-full shadow-md sm:-mb-4 sm:max-w-sm">
+<Card.Root
+	class="mb-4 w-full bg-white/80 shadow-lg ring-1 ring-white/40 backdrop-blur-sm sm:z-{index +
+		1} transition-transform sm:-mb-4 sm:max-w-sm"
+>
 	<Card.Header>
 		<div class="flex max-w-full gap-2 truncate">
 			<Author author={post.author} />
