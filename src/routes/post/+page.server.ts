@@ -1,20 +1,27 @@
+import { error } from '@sveltejs/kit';
 import { agent } from '$lib/api';
-import { AppBskyFeedDefs, AppBskyFeedPost } from '@atproto/api';
+import { AppBskyFeedDefs, AppBskyFeedGetPostThread, AppBskyFeedPost } from '@atproto/api';
 
 import type { PageServerLoad } from './$types';
-import type { AppBskyFeedGetPostThread } from '@atproto/api';
 
 const EXAMPLE_POST = 'at://did:plc:vwzwgnygau7ed7b7wt5ux7y2/app.bsky.feed.post/3karfx5vrvv23';
 
 export const load = (async ({ url }) => {
 	let uri = url.searchParams.get('uri');
 
-	// if uri is not provided, use example post for now
 	if (!uri) uri = EXAMPLE_POST;
 
-	const response: AppBskyFeedGetPostThread.Response = await agent.app.bsky.feed.getPostThread({
-		uri: uri
-	});
+	let response: AppBskyFeedGetPostThread.Response;
+	try {
+		response = await agent.app.bsky.feed.getPostThread({
+			uri: uri
+		});
+	} catch (err) {
+		if (err instanceof AppBskyFeedGetPostThread.NotFoundError) {
+			error(404, 'Post not found');
+		}
+		throw err;
+	}
 
 	if (!AppBskyFeedDefs.isThreadViewPost(response.data.thread))
 		throw new Error('Expected a thread view post');
